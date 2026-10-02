@@ -165,7 +165,7 @@ This allows activity to move from raw network or endpoint telemetry through dete
 
 The detailed architecture was created in **draw.io / diagrams.net** to document the physical and logical components of the lab.
 
-> 📷 **Architecture diagram will be added here**
+> **Architecture diagram will be added here**
 
 ```text
 architecture/
@@ -305,7 +305,7 @@ Zeek was used during investigations to examine network activity such as:
 
 Zeek connection telemetry was particularly useful during the network reconnaissance investigation because it provided visibility into connection attempts across multiple ports.
 
-> 📷 **Zeek telemetry screenshot will be added here**
+> **Zeek telemetry screenshot will be added here**
 
 ---
 
@@ -426,7 +426,7 @@ This also makes it easier to expand, rebuild, snapshot, and test systems within 
 
 ---
 
-# ⚔️ Controlled Security Testing
+# Controlled Security Testing
 
 Kali Linux was used as the controlled security-testing system.
 
@@ -445,7 +445,7 @@ The purpose of these tests was not exploitation for its own sake, but to generat
 
 ---
 
-# 🔬 SOC Investigations
+# SOC Investigations
 
 Five controlled SOC investigations were completed.
 
