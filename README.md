@@ -209,9 +209,17 @@ This validated the complete security-control path:
 
 This provides a controlled remote-administration path while reducing exposure of management interfaces.
 
-> **Evidence:** Sanitized VPN configuration/connection screenshot will be added here.
+### Tailscale Deployment
 
-Detailed implementation: [`docs/secure-remote-access.md`](docs/secure-remote-access.md)
+The following screenshot shows the authorized devices connected to the Tailscale network.
+
+![Tailscale Connected Devices](screenshots/vpn/tailscale-connected-devices.png)
+
+### Remote Access Validation
+
+Connectivity was tested from a remote Tailscale-connected device to the Linux VPN server, confirming that the private remote-access path was operational.
+
+![Tailscale Remote Access Validation](screenshots/vpn/tailscale-remote-access-validation.png)
 
 ---
 
