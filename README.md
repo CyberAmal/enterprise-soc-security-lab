@@ -63,8 +63,6 @@ flowchart TB
     VPN -. "Secure Remote Access" .-> MGMT
 ```
 
-A detailed draw.io architecture diagram is available in the [`architecture/`](architecture/) directory.
-
 ---
 
 ## SOC Monitoring Workflow
@@ -161,7 +159,7 @@ A flat network would allow systems to communicate with little restriction. Segme
 
 I generated a controlled cross-network connection attempt and verified that pfSense blocked access according to the configured policy.
 
-> **Evidence:** Network/VLAN configuration screenshot will be added here.
+# Network Security Screenshots
 
 ---
 
