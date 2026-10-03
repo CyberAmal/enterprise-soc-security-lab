@@ -185,7 +185,7 @@ Firewall policy effectiveness was tested rather than assumed.
 
 During the cross-network investigation, a controlled connection attempt toward management infrastructure was blocked by pfSense and the resulting event was investigated in Splunk.
 
-![Blocked pfSense Event in Splunk](screenshots/firewall/pfsense-blocked-event-splunk.png)
+![Blocked pfSense Event in Splunk](screenshots/firewall/pfsense-security-lab-rules.png)
 
 ---
 
