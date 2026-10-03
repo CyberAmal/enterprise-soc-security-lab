@@ -160,7 +160,6 @@ A flat network would allow systems to communicate with little restriction. Segme
 I generated a controlled cross-network connection attempt and verified that pfSense blocked access according to the configured policy.
 
 ![pfSense VLAN Configuration](screenshots/network/pfsense-vlan-configuration.png)
-# Network Security Screenshots
 
 ---
 
@@ -186,7 +185,7 @@ Firewall policy effectiveness was tested rather than assumed.
 
 During the cross-network investigation, a controlled connection attempt toward management infrastructure was blocked by pfSense and the resulting event was investigated in Splunk.
 
-> **Evidence:** pfSense firewall-rule and blocked-event screenshots will be added here.
+![Blocked pfSense Event in Splunk](screenshots/firewall/pfsense-blocked-event-splunk.png)
 
 ---
 
