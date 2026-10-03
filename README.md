@@ -227,7 +227,7 @@ Connectivity was tested from a remote Tailscale-connected device to the Linux VP
 
 A dedicated system was configured as a passive network IDS sensor.
 
-The managed switch uses **port mirroring/SPAN** to provide the sensor with copies of network traffic.
+The managed switch uses **port mirroring/SPAN** to send copies of network traffic to the IDS sensor for passive inspection.
 
 The sensor runs:
 
@@ -238,15 +238,33 @@ The sensor runs:
 
 ### Why a Dedicated Sensor?
 
-Separating network monitoring from normal endpoints provides a dedicated location for passive traffic inspection.
+Separating network monitoring from normal endpoints provides a dedicated location for passive traffic inspection and security telemetry collection.
 
-### Validation
+### IDS Network Interfaces
 
-Packet capture was used to verify that mirrored traffic was successfully reaching the monitoring interface.
+The following screenshot shows the network interfaces configured on the dedicated IDS sensor, including the interface used for network traffic monitoring.
 
-> **Evidence:** IDS interface / packet-capture screenshot will be added here.
+![IDS Network Interfaces](screenshots/ids/ids-network-interfaces.png)
 
-Detailed implementation: [`docs/ids-monitoring.md`](docs/ids-monitoring.md)
+### Port Mirroring Validation
+
+Packet capture was performed on the monitoring interface to verify that traffic mirrored by the managed switch was successfully reaching the IDS sensor.
+
+![IDS Mirrored Network Traffic](screenshots/ids/ids-mirrored-traffic.png)
+
+This confirmed the monitoring path:
+
+**Network Traffic → Managed Switch → Port Mirroring/SPAN → IDS Sensor**
+
+### Monitoring Services
+
+The IDS sensor runs the core monitoring and log-forwarding services required by the lab, including **Zeek, Suricata, Splunk Universal Forwarder, and Wazuh Agent**.
+
+The following screenshot verifies that the monitoring services are operational.
+
+![IDS Monitoring Services](screenshots/ids/ids-monitoring-services.png)
+
+This validated that the dedicated sensor was both **receiving mirrored network traffic and actively running the required security-monitoring services**.
 
 ---
 
