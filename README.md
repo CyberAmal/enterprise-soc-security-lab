@@ -159,7 +159,7 @@ A flat network would allow systems to communicate with little restriction. Segme
 
 I generated a controlled cross-network connection attempt and verified that pfSense blocked access according to the configured policy.
 
-screenshots/network/pfsense-vlan-configuration.png
+![pfSense VLAN Configuration](screenshots/network/pfsense-vlan-configuration.png)
 # Network Security Screenshots
 
 ---
