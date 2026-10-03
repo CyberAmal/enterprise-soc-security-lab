@@ -181,11 +181,13 @@ Firewall events are also used during security investigations.
 
 ### Validation
 
-Firewall policy effectiveness was tested rather than assumed.
+The following screenshot shows the firewall rules configured for the Security Lab network.
 
-During the cross-network investigation, a controlled connection attempt toward management infrastructure was blocked by pfSense and the resulting event was investigated in Splunk.
+![pfSense Security Lab Firewall Rules](screenshots/firewall/pfsense-security-lab-rules.png)
 
-![Blocked pfSense Event in Splunk](screenshots/firewall/pfsense-security-lab-rules.png)
+The rules were reviewed and tested to verify connectivity between the configured network segments. pfSense firewall events are forwarded to Splunk, providing centralized visibility for network-security monitoring and investigation.
+
+This configuration demonstrates the use of pfSense for **inter-VLAN routing, network access control, firewall policy management, and centralized security logging**.
 
 ---
 
