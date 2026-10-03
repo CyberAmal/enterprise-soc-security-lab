@@ -174,22 +174,32 @@ It provides:
 - Firewall policies
 - NAT
 - DHCP
-- Inter-network access control
+- Inter-VLAN access control
 - Security logging
 
-Firewall events are also used during security investigations.
+Firewall events are forwarded to Splunk for centralized monitoring and security investigation.
 
-### Validation
+### Firewall Policy
 
-The following screenshot shows the firewall rules configured for the Security Lab network.
+The following screenshot shows the firewall rules configured for the Security Lab network, including a rule blocking SSH traffic on TCP port 22 to the protected target.
 
 ![pfSense Security Lab Firewall Rules](screenshots/firewall/pfsense-security-lab-rules.png)
 
-The rules were reviewed and tested to verify connectivity between the configured network segments. pfSense firewall events are forwarded to Splunk, providing centralized visibility for network-security monitoring and investigation.
+### Firewall Enforcement
 
-This configuration demonstrates the use of pfSense for **inter-VLAN routing, network access control, firewall policy management, and centralized security logging**.
+A controlled SSH connection attempt was generated from the Security Lab after the temporary SSH access used during testing was removed. pfSense blocked the TCP/22 connection according to the configured firewall policy.
 
----
+![pfSense Blocked SSH Traffic](screenshots/firewall/pfsense-blocked-ssh.png)
+
+### SIEM Validation
+
+The corresponding blocked firewall event was also ingested into Splunk, confirming centralized visibility of the denied connection.
+
+![Blocked SSH Event in Splunk](screenshots/firewall/pfsense-blocked-ssh-splunk.png)
+
+This validated the complete security-control path:
+
+**Security Lab → pfSense Firewall → Traffic Blocked → Firewall Log → Splunk SIEM**
 
 ## 3. Secure Remote Access
 
