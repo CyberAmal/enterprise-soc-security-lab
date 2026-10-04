@@ -1,6 +1,6 @@
 # Enterprise SOC & Network Security Lab
 
-> A hands-on enterprise-style security lab built to demonstrate practical SOC operations, network security, SIEM monitoring, threat detection, incident investigation, and detection engineering.
+> A hands-on enterprise-style security lab built to demonstrate practical SOC operations, network security, SIEM monitoring, threat detection, incident investigation, and security-control validation.
 
 ---
 
@@ -99,7 +99,6 @@ The architecture allows network and security activity to be collected from multi
 | Network Segmentation | VLANs + firewall policies |
 | Network Traffic Analysis | Zeek / Suricata / Wireshark |
 | Incident Investigation | Structured SOC investigations |
-| Detection Engineering | Sigma + SIEM detection logic |
 | ATT&CK Mapping | MITRE ATT&CK |
 | Virtualization | Proxmox VE |
 | Secure Remote Access | Tailscale |
@@ -119,7 +118,7 @@ The architecture allows network and security activity to be collected from multi
 
 ### Detection & Investigation
 
-`Sigma` • `MITRE ATT&CK`
+`MITRE ATT&CK`
 
 ### Infrastructure
 
@@ -471,9 +470,9 @@ The lab was used to perform structured security investigations rather than only 
 | # | Investigation | Primary Evidence |
 |---|---|---|
 | 01 | Phishing Email | Email/indicator analysis |
-| 02 | SSH Brute Force | Wazuh / Splunk / Zeek |
+| 02 | SSH Brute Force | Wazuh / Linux Auth Logs / Splunk |
 | 03 | Network Reconnaissance | Zeek / Suricata / Splunk |
-| 04 | Cross-Network Access Attempt | pfSense / Splunk |
+| 04 | Cross-VLAN Access Attempt | pfSense / Splunk |
 | 05 | Suricata IDS/IPS Validation | Suricata / Splunk |
 
 ---
