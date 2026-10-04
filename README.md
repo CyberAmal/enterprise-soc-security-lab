@@ -464,32 +464,6 @@ This validated Splunk as the central investigation layer of the lab:
 
 ---
 
-# SOC Dashboards
-
-Custom Splunk dashboards were created to provide centralized visibility into security activity.
-
-## SOC Overview
-
-Provides a high-level view of important security activity across the environment.
-
-> **Dashboard Screenshot — SOC Overview**
-
-## Threat Activity
-
-Provides visibility into detected or suspicious security activity.
-
-> **Dashboard Screenshot — Threat Activity**
-
-## Endpoint Security
-
-Provides visibility into endpoint/security monitoring information.
-
-> **Dashboard Screenshot — Endpoint Security**
-
-The dashboards demonstrate the transformation of raw telemetry into information that can be reviewed more efficiently during SOC monitoring.
-
----
-
 # SOC Investigations
 
 The lab was used to perform structured security investigations rather than only generate alerts.
