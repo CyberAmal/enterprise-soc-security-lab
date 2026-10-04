@@ -1,8 +1,5 @@
-Suricata README
+# Suricata README
 
-
-
- 
 
 Suricata Evidence
 This folder contains screenshots of Suricata network intrusion detection and custom detection-rule validation used in the Enterprise SOC & Network Security Lab.
