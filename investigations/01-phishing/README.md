@@ -68,12 +68,6 @@ The URL extracted from the email was investigated using multiple analysis source
 
 ![Phishing URL VirusTotal Analysis](06-phishing-url-virustotal.png)
 
-### URLScan Analysis
-
-![Phishing URL URLScan Analysis](06-phishing-url-urlscan.png)
-
-Using multiple sources provided additional context around the URL rather than relying on a single reputation result.
-
 ---
 
 ## 7. Redirect Domain Analysis
