@@ -514,21 +514,19 @@ The investigation demonstrated an important distinction between **telemetry coll
 
 ---
 
-## 04 — Cross-Network Access Attempt
+## 04 — Cross-VLAN Access Attempt
 
-A controlled connection attempt was generated from the security-testing environment toward management infrastructure.
+A controlled SSH connection attempt was generated from the **Security Lab VLAN** toward a system within the **SOC VLAN** to validate inter-VLAN network segmentation.
 
-pfSense blocked the connection according to the configured security policy.
+pfSense blocked the connection according to the configured firewall policy, preventing the Security Lab system from accessing the restricted SOC service.
 
-The firewall event was then identified in Splunk.
+The corresponding firewall event was then identified and investigated in **Splunk**, confirming centralized visibility into the blocked activity.
 
-For the attempted SSH remote-service activity:
+**Verdict:** True Positive — Controlled Cross-VLAN Access Attempt  
+**Result:** Blocked Successfully  
+**Impact:** No compromise observed
 
-**MITRE ATT&CK:** `T1021.004 — SSH`
-
-The investigation does not claim successful lateral movement because the firewall prevented the connection.
-
-[View Investigation](investigations/04-cross-vlan-access/)
+[View Investigation](https://github.com/CyberAmal/enterprise-soc-security-lab/tree/main/investigations/04-cross-vlan-access)
 
 ---
 
