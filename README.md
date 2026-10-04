@@ -544,47 +544,18 @@ No ATT&CK technique was assigned because the test was designed to validate a def
 
 ---
 
-# Detection Engineering
-
-The project includes custom Sigma detection content.
-
-```text
-detections/
-└── sigma/
-    ├── ssh-bruteforce.yml
-    ├── port-scan-detection.yml
-    └── suspicious-powershell.yml
-```
-
-### SSH Authentication Detection
-
-Detects failed SSH authentication activity that can be used as an event-level building block for brute-force correlation.
-
-### Network Service Discovery Detection
-
-Identifies network telemetry associated with potential service discovery.
-
-A stronger port-scan analytic requires correlation across multiple destination ports or events within a defined period.
-
-### Suspicious PowerShell Detection
-
-Identifies PowerShell execution containing patterns associated with suspicious command activity.
-
-[View Detection Rules](detections/)
-
----
-
 # MITRE ATT&CK Mapping
 
 MITRE ATT&CK was applied only where the observed activity supported an appropriate mapping.
 
-| Activity | Technique |
-|---|---|
+| **Activity** | **Technique** |
+| --- | --- |
 | SSH Brute Force | `T1110 — Brute Force` |
 | Network Service Discovery | `T1046 — Network Service Discovery` |
-| SSH Remote-Service Attempt | `T1021.004 — SSH` |
 
-ATT&CK techniques were not assigned to tests that did not meaningfully represent adversary behavior.
+ATT&CK techniques were not assigned to security-control validation tests that did not meaningfully represent adversary behavior.
+
+The cross-VLAN firewall test and Suricata IPS validation were designed to verify defensive security controls rather than reproduce specific attacker techniques.
 
 ---
 
@@ -594,43 +565,47 @@ ATT&CK techniques were not assigned to tests that did not meaningfully represent
 
 Collecting telemetry does not automatically create a useful security alert.
 
-Detection logic and correlation are required to transform raw events into actionable detections.
+Detection logic and correlation are required to transform raw events into actionable security information.
 
 ### 2. Correlation Improves Investigations
 
-Wazuh, Zeek, Suricata, pfSense, and Splunk provide different perspectives.
+Wazuh, Zeek, Suricata, pfSense, and Splunk provide different perspectives across host, authentication, network, firewall, and security-event telemetry.
 
-Combining these sources provides stronger investigative context than relying on a single tool.
+Combining these sources provides stronger investigative context than relying on a single security tool.
 
 ### 3. Segmentation Is an Active Security Control
 
-The controlled cross-network test demonstrated that firewall-enforced segmentation can prevent unauthorized access to management infrastructure.
+The controlled cross-VLAN test demonstrated that pfSense firewall policies successfully enforced segmentation between the **Security Lab VLAN and SOC VLAN**.
 
-### 4. Detection Rules Require Context
+The attempted SSH connection was blocked, and the corresponding firewall event was available in Splunk for centralized investigation.
+
+### 4. Detection Requires Context
 
 A single network connection is not sufficient to confidently identify a port scan.
 
-Useful detections often require correlation across multiple events, ports, destinations, or time windows.
+Useful detections often require correlation across multiple events, destination ports, systems, or defined time windows.
 
 ### 5. Security Controls Must Be Validated
 
 Configuring an IDS/IPS does not prove that prevention works.
 
-The Suricata test validated the complete path from traffic inspection to active blocking and SIEM visibility.
+The controlled Suricata IPS test validated the complete path:
+
+**Traffic Inspection → Rule Match → Inline Packet Drop → Security-Event Logging → Splunk Visibility**
 
 ---
 
 # Challenges & Troubleshooting
 
-Building the environment required troubleshooting across several areas, including:
+Building and validating the environment required troubleshooting across several areas, including:
 
 - VLAN connectivity
 - Firewall rules
-- DHCP/static addressing
+- DHCP and static addressing
 - Port mirroring
 - IDS capture interfaces
 - Zeek monitoring
-- Suricata logging
+- Suricata detection and logging
 - Splunk ingestion
 - Wazuh/Splunk integration
 - Service persistence
@@ -644,39 +619,22 @@ Troubleshooting was an important part of the project because deploying a securit
 
 Temporary configurations used during controlled security testing were removed after the investigations.
 
-This included temporary firewall access and temporary Suricata test rules.
+This included temporary firewall configurations and Suricata test rules.
 
 The environment was then retested to confirm that:
 
 - Intended firewall restrictions were restored
 - Normal network connectivity operated correctly
 - IDS monitoring remained operational
-- Mirrored traffic continued reaching the sensor
+- Mirrored traffic continued reaching the IDS sensor
 
 This prevented temporary testing configurations from becoming permanent security exceptions.
 
 ---
 
-# Repository Structure
-
-```text
-enterprise-soc-security-lab/
-│
-├── README.md
-├── architecture/
-├── docs/
-├── investigations/
-├── detections/
-└── screenshots/
-```
-
-Detailed implementation documentation is stored under `docs/`, full SOC cases under `investigations/`, and detection content under `detections/`.
-
----
-
 # What I Learned
 
-This project strengthened my understanding of how individual defensive technologies operate as part of a larger security architecture.
+This project strengthened my understanding of how individual defensive technologies operate together as part of a larger security architecture.
 
 The most important lesson was that effective SOC monitoring is not simply about installing security tools.
 
@@ -684,7 +642,9 @@ A useful defensive workflow requires:
 
 **Visibility → Detection → Correlation → Investigation → Validation → Documentation**
 
-Building the environment from the network layer through to SIEM investigation helped me understand how firewall policies, network telemetry, IDS/IPS, security monitoring, detection logic, dashboards, and analyst investigation work together.
+Building the environment from the network layer through to SIEM investigation helped me understand how **network segmentation, firewall policies, network telemetry, IDS/IPS, host monitoring, SIEM correlation, and analyst investigation** work together.
+
+The investigations also demonstrated the importance of distinguishing between **raw telemetry, security detections, and validated security-control behavior** rather than treating every observed event as an alert.
 
 ---
 
