@@ -303,7 +303,6 @@ This telemetry provided connection-level evidence that network reconnaissance ha
 
 Zeek provided evidence of the scanning activity through its connection telemetry even though the presence of connection records alone did not constitute a dedicated port-scan alert.
 
-This demonstrated an important detection-engineering principle: **collecting telemetry provides visibility, while detection logic and correlation are required to transform that telemetry into actionable security detections.**
 ---
 
 ## 6. Suricata IDS/IPS
