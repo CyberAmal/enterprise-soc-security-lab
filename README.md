@@ -305,34 +305,54 @@ Zeek provided evidence of the scanning activity through its connection telemetry
 
 ---
 
-## 6. Suricata IDS/IPS
+## 6. Suricata IDS & Custom Detection Engineering
 
-Suricata provides network IDS/IPS capability.
+Suricata was deployed on the dedicated IDS sensor to inspect mirrored network traffic and generate network-security alerts.
 
 It was used for:
 
-- Network inspection
-- IDS alerts
-- Custom-rule testing
-- IPS validation
+- Network traffic inspection
+- Signature-based detection
+- IDS alerting
+- Custom detection-rule development
 - Security-event logging
+- SIEM integration with Splunk
 
-### IPS Validation
+### Custom Detection Rule
 
-A temporary controlled Suricata rule was created to match specific test traffic.
+A custom Suricata rule was created to detect ICMP Echo Request traffic during a controlled lab test.
 
-The test confirmed that:
+The rule used a locally assigned SID (`1000001`) and generated the alert:
 
-1. Traffic reached Suricata.
-2. The rule matched.
-3. Suricata generated the security event.
-4. Inline IPS dropped the matching traffic.
-5. The resulting event was visible in Splunk.
+**LAB DETECTION - ICMP Ping Detected**
 
-The temporary rule was removed after validation and normal connectivity was retested.
+![Suricata Custom Detection Rule](screenshots/suricata/suricata-custom-rule.png)
 
-> **Evidence:** Suricata detection and Splunk-event screenshots will be added here.
+### Detection Validation
 
+Controlled ICMP traffic was generated from the Kali security-testing system toward an authorized lab server.
+
+Suricata observed the mirrored traffic, matched the custom detection rule, and generated the expected security alert.
+
+![Suricata Custom Rule Alert](screenshots/suricata/suricata-custom-rule-alert.png)
+
+The test validated the following detection path:
+
+**Kali → Network Traffic → SPAN/Mirror → Suricata → Custom Rule Match → Security Alert**
+
+### SIEM Validation
+
+The resulting Suricata alert was forwarded to Splunk, where the same detection could be searched and reviewed centrally.
+
+![Suricata Alert in Splunk](screenshots/suricata/suricata-custom-rule-splunk.png)
+
+This validated the complete monitoring pipeline:
+
+**Network Activity → Suricata Detection → Alert Generation → Splunk SIEM → Analyst Visibility**
+
+### Key Finding
+
+This test demonstrated how custom network-detection logic can be developed and validated using controlled traffic and then integrated into a centralized SIEM workflow.
 ---
 
 ## 7. Wazuh Security Monitoring
