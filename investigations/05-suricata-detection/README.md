@@ -1,113 +1,119 @@
-# Suricata Custom Detection Validation
+# Suricata IDS/IPS Validation
 
 ## Overview
 
-A custom Suricata detection rule was created and tested within the lab to validate network detection and SIEM integration.
+A controlled ICMP test was performed to validate the inline prevention capability of Suricata IPS within the lab environment.
 
-The objective was to confirm that controlled network traffic could be inspected by Suricata, matched against custom detection logic, generate an alert, and become visible in Splunk for centralized investigation.
+A temporary custom Suricata rule was configured to match the controlled traffic and actively block matching packets.
 
-**Final Verdict:** True Positive — Controlled Custom Detection Test  
-**Result:** Custom detection successfully triggered  
-**SID:** `1000001`
+The objective was to validate the complete prevention and monitoring pipeline:
 
----
+**Controlled Traffic → Suricata Inspection → Rule Match → Packet Drop → Security Event → Splunk SIEM**
 
-## 1. Custom Suricata Rule
-
-A custom Suricata rule was created to detect ICMP Echo Request traffic.
-
-![Suricata Custom Rule](01-suricata-custom-rule.png)
-
-The rule generated the following alert when matching traffic was observed:
-
-**`LAB DETECTION - ICMP Ping Detected`**
-
-The locally assigned signature ID was:
-
-**SID:** `1000001`
+**Final Verdict:** True Positive — Controlled IPS Detection and Prevention Test  
+**Result:** Traffic Successfully Blocked  
+**Impact:** No compromise observed  
+**Rule SID:** `1000005`
 
 ---
 
-## 2. Detection Validation
+## 1. Suricata IPS Detection and Drop
 
-Controlled ICMP traffic was generated within the authorized lab environment.
+Controlled ICMP Echo Request traffic was generated toward an external destination.
 
-Suricata inspected the traffic, matched the custom rule, and generated the expected security alert.
+The custom Suricata IPS rule matched the traffic and generated the alert:
 
-![Suricata Custom Rule Alert](02-suricata-custom-rule-alert.png)
+**`SOC INVESTIGATION 05 - CONTROLLED IPS DROP`**
 
-This confirmed that the custom detection logic was operating as expected.
+![Suricata IPS Drop Alert](01-suricata-ips-drop-alert.png)
 
----
-
-## 3. Splunk SIEM Validation
-
-The resulting Suricata security event was forwarded to Splunk for centralized monitoring and investigation.
-
-![Suricata Detection in Splunk](03-splunk-suricata-detection.png)
-
-The same custom detection message and SID could be identified in Splunk, validating the integration between Suricata and the SIEM.
+The Suricata event confirmed that the matching traffic triggered the configured IPS rule and was handled as a drop/block action.
 
 ---
 
-## 4. Investigation Findings
+## 2. Splunk SIEM Correlation
 
-The collected evidence was reviewed to validate the complete detection pipeline.
+The resulting Suricata IPS security events were forwarded to Splunk for centralized investigation.
 
-![Suricata Detection Findings](04-suricata-detection-findings.png)
+![Splunk Suricata IPS Correlation](02-splunk-suricata-ips-correlation.png)
 
-The test confirmed:
+The corresponding events in Splunk contained the custom signature and SID `1000005`.
 
-- Controlled ICMP traffic reached the monitoring environment.
-- Suricata inspected the network traffic.
-- The custom detection rule matched the traffic.
-- Suricata generated the expected security alert.
-- The resulting event was available in Splunk for investigation.
+The event data also recorded the Suricata event as a **drop** with the alert action marked as **blocked**, providing centralized evidence of the IPS enforcement.
+
+---
+
+## 3. Investigation Findings
+
+The collected evidence was reviewed to determine whether Suricata successfully detected and prevented the controlled traffic.
+
+![Suricata IPS Findings](03-suricata-ips-findings.png)
+
+The test demonstrated that:
+
+- Controlled ICMP traffic reached Suricata.
+- The custom IPS rule matched the traffic.
+- Suricata generated the expected security event.
+- The matching traffic was actively dropped.
+- The test resulted in packet loss during the controlled validation.
+- The resulting IPS events were visible in Splunk.
+
+### Security Controls Validated
+
+- Suricata traffic inspection
+- Custom IPS rule
+- Inline traffic blocking
+- Security-event logging
+- Splunk SIEM correlation
+
+---
+
+## 4. MITRE ATT&CK Assessment
+
+The activity was reviewed to determine whether a MITRE ATT&CK technique should be assigned.
+
+![MITRE ATT&CK Assessment](04-mitre-assessment.png)
+
+**No specific MITRE ATT&CK technique was assigned.**
+
+The ICMP traffic was intentionally generated to validate Suricata inline detection and prevention capabilities. The test did not represent a specific adversary behavior, and assigning an ATT&CK technique would overstate the evidence.
 
 ---
 
 ## Analyst Assessment
 
-The test successfully validated the custom Suricata detection rule and the associated SIEM monitoring workflow.
+The investigation confirmed that Suricata successfully detected traffic matching the controlled IPS rule and actively blocked the matching packets.
 
-The observed alert was generated as a result of an authorized security-control validation test.
+The resulting security events were also successfully ingested into Splunk, providing centralized evidence of both the detection and prevention activity.
 
 ### Verdict
 
-**True Positive — Controlled Custom Detection Test**
+**True Positive — Controlled IPS Detection and Prevention Test**
 
 ### Result
 
-**Custom Rule Triggered Successfully**
+**Traffic Successfully Blocked**
 
-### SIEM Validation
+### Impact
 
-**Suricata alert successfully identified in Splunk.**
+The matching traffic was prevented from reaching its destination during the controlled test.
 
-No MITRE ATT&CK technique was assigned because the test was designed to validate **custom detection logic and SIEM integration**, rather than simulate a specific adversary technique.
+**No compromise was observed.**
 
 ---
 
-## Security Controls Validated
-
-- Suricata network inspection
-- Custom detection-rule development
-- Signature-based alerting
-- Security-event logging
-- Splunk SIEM ingestion
-- Centralized detection investigation
-
 ## SOC Skills Demonstrated
 
-- Suricata rule development
-- Network detection engineering
-- Controlled detection testing
-- IDS alert analysis
+- Suricata IDS/IPS administration
+- Custom IPS rule testing
+- Inline prevention validation
+- Network-security event analysis
 - Splunk SIEM investigation
-- Detection validation
 - Security-event correlation
-- Analyst documentation
+- Security-control validation
+- Evidence-based analyst assessment
+- MITRE ATT&CK applicability assessment
 
-## Detection Workflow
+## Investigation Workflow
 
-**Controlled ICMP Traffic → Suricata Inspection → Custom Rule Match → Alert Generation → Splunk SIEM → Analyst Validation**
+**Controlled ICMP Traffic → Suricata Inspection → Custom Rule Match → Inline Packet Drop → Security Event → Splunk SIEM → Analyst Validation**
