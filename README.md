@@ -446,7 +446,7 @@ The dashboard provides visual monitoring of security telemetry and supports fast
 
 ![Splunk SOC Dashboard](screenshots/splunk/splunk-soc-dashboard.png)
 ![Splunk SOC Dashboard](screenshots/splunk/splunk-soc-dashboard-1.png)
-![Splunk SOC Dashboard](screenshots/splunk/splunk-soc-dashboar-2.png)
+![Splunk SOC Dashboard](screenshots/splunk/splunk-soc-dashboard-2.png)
 ![Splunk SOC Dashboard](screenshots/splunk/splunk-soc-dashboard-3.png)
 
 ### Centralized Investigation
