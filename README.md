@@ -540,7 +540,7 @@ The test confirmed:
 
 No ATT&CK technique was assigned because the test was designed to validate a defensive control rather than reproduce a specific adversary technique.
 
-[View Investigation](investigations/05-suricata-ips/)
+[View Investigation](investigations/05-suricata-detection/)
 
 ---
 
