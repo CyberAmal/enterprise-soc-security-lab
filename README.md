@@ -403,6 +403,8 @@ Individual security products provide only part of an investigation.
 Centralizing Wazuh alerts in Splunk allows host-based security events to be correlated with other telemetry such as **pfSense firewall events, Zeek network telemetry, and Suricata detections**.
 
 This provides a more complete view of security activity across the lab environment.
+
+
 ---
 
 ## 8. Splunk SIEM
