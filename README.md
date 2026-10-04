@@ -283,16 +283,27 @@ Telemetry includes information such as:
 
 Zeek was particularly useful during the network-reconnaissance investigation because it provided connection-level evidence of scanning activity.
 
+### Connection Telemetry
+
+The following screenshot shows connection telemetry recorded by Zeek, providing visibility into network communications observed by the dedicated IDS sensor.
+
+![Zeek Connection Telemetry](screenshots/zeek/zeek-connection-telemetry.png)
+
+### Network Reconnaissance Evidence
+
+A controlled network scan was generated from the Security Lab network toward a lab server. Zeek recorded multiple TCP connection attempts from the same source to the same destination across different destination ports.
+
+![Zeek Network Reconnaissance](screenshots/zeek/zeek-network-reconnaissance.png)
+
+This telemetry provided connection-level evidence that network reconnaissance had occurred.
+
 ### Key Finding
 
 **Visibility is not the same as detection.**
 
-Zeek can provide evidence that suspicious network activity occurred even when no dedicated alert is generated.
+Zeek provided evidence of the scanning activity through its connection telemetry even though the presence of connection records alone did not constitute a dedicated port-scan alert.
 
-This became an important detection-engineering finding during the project.
-
-> **Evidence:** Zeek connection telemetry screenshot will be added here.
-
+This demonstrated an important detection-engineering principle: **collecting telemetry provides visibility, while detection logic and correlation are required to transform that telemetry into actionable security detections.**
 ---
 
 ## 6. Suricata IDS/IPS
