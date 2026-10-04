@@ -411,28 +411,56 @@ This provides a more complete view of security activity across the lab environme
 
 ## 8. Splunk SIEM
 
-Splunk acts as the primary centralized investigation and correlation platform.
+Splunk acts as the primary centralized investigation and correlation platform for the lab.
 
-Security information from multiple sources can be searched and analyzed from one location, including:
+Security telemetry from multiple sources is centralized and searchable from one location, including:
 
 - Wazuh alerts
-- Zeek telemetry
-- Suricata events
+- Zeek network telemetry
+- Suricata security events
 - pfSense firewall events
-- Authentication/security events
+- Authentication and system security events
 
 Splunk was used throughout the project for:
 
 - Event searching
 - Log analysis
 - Event correlation
-- Investigation
+- Security investigation
 - Dashboard visualization
 - Security-control validation
 
-> **Evidence:** Splunk data-source/search screenshot will be added here.
+### Centralized Data Sources
 
-Detailed implementation: [`docs/splunk-siem.md`](docs/splunk-siem.md)
+Multiple security technologies forward telemetry into Splunk, providing a centralized location for investigation and analysis.
+
+The following screenshot demonstrates the different security data sources being ingested into the SIEM.
+
+![Splunk Security Data Sources](screenshots/splunk/splunk-data-sources.png)
+
+### SOC Dashboard
+
+A centralized Splunk dashboard was created to provide an overview of security activity across the lab environment.
+
+The dashboard provides visual monitoring of security telemetry and supports faster identification and investigation of activity across multiple security controls.
+
+![Splunk SOC Dashboard](screenshots/splunk/splunk-soc-dashboard.png)
+![Splunk SOC Dashboard](screenshots/splunk/splunk-soc-dashboard-1.png)
+![Splunk SOC Dashboard](screenshots/splunk/splunk-soc-dashboar2.png)
+![Splunk SOC Dashboard](screenshots/splunk/splunk-soc-dashboard-3.png)
+
+### Centralized Investigation
+
+The previous validation tests demonstrated that events from multiple security controls could be investigated through Splunk, including:
+
+- **pfSense** — blocked firewall activity
+- **Suricata** — custom network detection alerts
+- **Wazuh** — host-based security alerts
+- **Zeek** — connection-level network telemetry
+
+This validated Splunk as the central investigation layer of the lab:
+
+**Security Controls → Log Collection → Splunk SIEM → Search & Correlation → Dashboard → Analyst Investigation**
 
 ---
 
