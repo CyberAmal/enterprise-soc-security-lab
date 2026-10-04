@@ -353,6 +353,8 @@ This validated the complete monitoring pipeline:
 ### Key Finding
 
 This test demonstrated how custom network-detection logic can be developed and validated using controlled traffic and then integrated into a centralized SIEM workflow.
+
+
 ---
 
 ## 7. Wazuh Security Monitoring
