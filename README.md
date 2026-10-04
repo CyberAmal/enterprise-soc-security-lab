@@ -357,36 +357,41 @@ This test demonstrated how custom network-detection logic can be developed and v
 
 ## 7. Wazuh Security Monitoring
 
-Wazuh provides security monitoring within the environment.
+Wazuh provides host-based security monitoring across the lab environment.
 
-A major part of the project was integrating **Wazuh alerts into Splunk**, allowing Wazuh security events to be investigated alongside network telemetry.
+A major part of the project was integrating **Wazuh alerts into Splunk**, allowing endpoint security events to be investigated alongside firewall, IDS, and network telemetry.
 
-```mermaid
-flowchart LR
+### Agent Monitoring
 
-    ENDPOINT["Endpoint / System"]
-    --> WAZUH["Wazuh"]
+The Wazuh Agent was deployed on the dedicated IDS sensor and connected to the Wazuh Manager for centralized host monitoring.
 
-    WAZUH --> ALERT["Security Alert"]
-    ALERT --> SPLUNK["Splunk SIEM"]
+![Wazuh Active Agent](screenshots/wazuh/wazuh-active-agents.png)
 
-    NETWORK["Network Telemetry"]
-    --> SPLUNK
+### Controlled SSH Detection
 
-    SPLUNK --> CORR["Correlation"]
-    CORR --> INVEST["Investigation"]
-```
+A controlled failed SSH authentication attempt was generated against the monitored IDS sensor.
+
+Wazuh detected the authentication activity and generated a corresponding security event, demonstrating host-level monitoring and alert generation.
+
+![Wazuh SSH Security Alert](screenshots/wazuh/wazuh-security-alert.png)
+
+### Wazuh → Splunk Integration
+
+The resulting Wazuh security event was also ingested into Splunk, allowing the same event to be searched and investigated alongside other security telemetry.
+
+![Wazuh Alert in Splunk](screenshots/wazuh/wazuh-alert-in-splunk.png)
+
+This validated the monitoring pipeline:
+
+**SSH Authentication Activity → Host Logs → Wazuh Agent → Wazuh Detection → Splunk SIEM → Analyst Investigation**
 
 ### Why Integrate Wazuh with Splunk?
 
 Individual security products provide only part of an investigation.
 
-Centralizing telemetry allows endpoint/security events to be compared with network activity and other security logs.
+Centralizing Wazuh alerts in Splunk allows host-based security events to be correlated with other telemetry such as **pfSense firewall events, Zeek network telemetry, and Suricata detections**.
 
-> **Evidence:** Wazuh alerts visible inside Splunk will be added here.
-
-Detailed integration: [`docs/wazuh-integration.md`](docs/wazuh-integration.md)
-
+This provides a more complete view of security activity across the lab environment.
 ---
 
 ## 8. Splunk SIEM
