@@ -14,7 +14,7 @@ The objective was to determine the nature of the email, assess potential impact,
 
 The original investigation evidence was preserved before analysis and a SHA-256 hash was generated to provide a reference for evidence integrity.
 
-![Evidence Preservation](evidence/01-evidence-preservation-sha256.png)
+![Evidence Preservation](01-evidence-preservation-sha256.png)
 
 This established a repeatable evidence-handling process before further analysis was performed.
 
@@ -24,7 +24,7 @@ This established a repeatable evidence-handling process before further analysis 
 
 The email headers were examined to identify relevant sender, routing, and delivery information.
 
-![Email Header Analysis](evidence/02-email-header-analysis.png)
+![Email Header Analysis](02-email-header-analysis.png)
 
 Header analysis was used to identify information requiring further investigation and to support extraction of relevant indicators.
 
@@ -34,7 +34,7 @@ Header analysis was used to identify information requiring further investigation
 
 URLs and other relevant indicators were extracted from the suspicious email for further analysis.
 
-![IOC URL Extraction](evidence/03-ioc-url-extraction.png)
+![IOC URL Extraction](03-ioc-url-extraction.png)
 
 Extracting indicators separately allowed each component of the email infrastructure to be investigated and correlated.
 
@@ -44,7 +44,7 @@ Extracting indicators separately allowed each component of the email infrastruct
 
 The identified originating IP address was investigated using reputation information and available threat-intelligence sources.
 
-![Originating IP Reputation](evidence/04-originating-ip-reputation.png)
+![Originating IP Reputation](04-originating-ip-reputation.png)
 
 The reputation results were considered alongside the remaining investigation evidence rather than being treated as a standalone verdict.
 
@@ -54,7 +54,7 @@ The reputation results were considered alongside the remaining investigation evi
 
 The sender domain was investigated to identify reputation information and potentially suspicious characteristics.
 
-![Sender Domain Reputation](evidence/05-sender-domain-reputation.png)
+![Sender Domain Reputation](05-sender-domain-reputation.png)
 
 Domain findings were compared with the email-header information and other extracted indicators.
 
@@ -66,11 +66,11 @@ The URL extracted from the email was investigated using multiple analysis source
 
 ### VirusTotal Analysis
 
-![Phishing URL VirusTotal Analysis](evidence/06-phishing-url-virustotal.png)
+![Phishing URL VirusTotal Analysis](06-phishing-url-virustotal.png)
 
 ### URLScan Analysis
 
-![Phishing URL URLScan Analysis](evidence/06-phishing-url-urlscan.png)
+![Phishing URL URLScan Analysis](06-phishing-url-urlscan.png)
 
 Using multiple sources provided additional context around the URL rather than relying on a single reputation result.
 
@@ -80,7 +80,7 @@ Using multiple sources provided additional context around the URL rather than re
 
 Redirect infrastructure associated with the investigated URL was also reviewed.
 
-![Redirect Domain Reputation](evidence/07-redirect-domain-reputation.png)
+![Redirect Domain Reputation](07-redirect-domain-reputation.png)
 
 This helped identify additional infrastructure associated with the suspicious activity.
 
@@ -90,7 +90,7 @@ This helped identify additional infrastructure associated with the suspicious ac
 
 The indicators identified during the investigation were consolidated to provide a single view of the evidence.
 
-![IOC Summary](evidence/08-ioc-summary.png)
+![IOC Summary](08-ioc-summary.png)
 
 The IOC summary was then used to support SIEM searches and the final analyst assessment.
 
@@ -100,7 +100,7 @@ The IOC summary was then used to support SIEM searches and the final analyst ass
 
 The identified indicators were searched in Splunk to determine whether monitored systems had contacted or interacted with the investigated infrastructure.
 
-![Splunk IOC Search](evidence/09-splunk-no-ioc-contact.png)
+![Splunk IOC Search](09-splunk-no-ioc-contact.png)
 
 The SIEM search provided environment-specific context that could be correlated with the external indicator analysis.
 
@@ -110,27 +110,15 @@ The SIEM search provided environment-specific context that could be correlated w
 
 The collected evidence was correlated to produce the final investigation findings.
 
-![Investigation Findings](evidence/10-investigation-findings.png)
+![Investigation Findings](10-investigation-findings.png)
 
 The assessment considered the email evidence, extracted indicators, reputation analysis, URL analysis, and internal SIEM telemetry together rather than relying on any individual indicator.
 
----
-
-## 11. Incident Timeline
-
-A timeline was created to organize the investigation activity and relevant events chronologically.
-
-![Incident Timeline](evidence/11-incident-timeline.png)
-
-The timeline provides a concise view of how the investigation progressed from initial evidence collection through analysis and final assessment.
-
----
-
-## 12. MITRE ATT&CK Mapping
+## 11. MITRE ATT&CK Mapping
 
 Observed activity was mapped to relevant MITRE ATT&CK techniques where supported by the investigation evidence.
 
-![MITRE ATT&CK Mapping](evidence/12-mitre-attack-mapping.png)
+![MITRE ATT&CK Mapping](11-mitre-attack-mapping.png)
 
 This provides a standardized framework for describing the attacker behaviors identified during the investigation.
 
