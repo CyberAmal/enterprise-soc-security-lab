@@ -17,7 +17,7 @@ The objective was to determine whether the reconnaissance activity could be iden
 
 Zeek connection telemetry was reviewed following the controlled network scan.
 
-![Zeek Port Scan Connections](evidence/01-zeek-port-scan-connections.png)
+![Zeek Port Scan Connections](01-zeek-port-scan-connections.png)
 
 The telemetry showed repeated TCP connection attempts from the same source toward the same destination across multiple destination ports.
 
@@ -29,7 +29,7 @@ This provided network-level evidence that reconnaissance activity had occurred.
 
 Zeek telemetry associated with the reconnaissance activity was investigated centrally in Splunk.
 
-![Splunk Zeek Port Scan Investigation](evidence/02-splunk-zeek-port-scan.png)
+![Splunk Zeek Port Scan Investigation](02-splunk-zeek-port-scan.png)
 
 Splunk allowed the source, destination, ports, and associated connection activity to be searched and reviewed from the centralized SIEM.
 
@@ -41,7 +41,7 @@ This demonstrated how raw network telemetry could be used during a SOC investiga
 
 Suricata telemetry was reviewed to provide additional network visibility during the investigation.
 
-![Suricata Network Telemetry](evidence/03-suricata-network-telemetry.png)
+![Suricata Network Telemetry](03-suricata-network-telemetry.png)
 
 The available telemetry was compared with the Zeek and Splunk evidence to provide additional context around the observed network activity.
 
@@ -51,7 +51,7 @@ The available telemetry was compared with the Zeek and Splunk evidence to provid
 
 Evidence collected from the monitoring environment was correlated to determine the nature of the activity.
 
-![Network Reconnaissance Findings](evidence/04-port-scan-findings.png)
+![Network Reconnaissance Findings](04-port-scan-findings.png)
 
 The investigation identified repeated connection attempts across multiple network services originating from the controlled security-testing environment.
 
@@ -69,7 +69,7 @@ This demonstrated the importance of combining **telemetry collection, detection 
 
 The observed reconnaissance behavior was mapped to the MITRE ATT&CK framework.
 
-![MITRE Network Service Discovery](evidence/05-mitre-network-service-discovery.png)
+![MITRE Network Service Discovery](05-mitre-network-service-discovery.png)
 
 **T1046 — Network Service Discovery**
 
