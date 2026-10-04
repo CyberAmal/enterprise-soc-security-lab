@@ -16,7 +16,7 @@ The objective was to determine whether the activity could be detected, validate 
 
 Wazuh detected repeated SSH authentication failures on the monitored system and generated security alerts associated with the activity.
 
-![Wazuh SSH Brute-Force Alert](evidence/01-wazuh-ssh-bruteforce-alert.png)
+![Wazuh SSH Brute-Force Alert](01-wazuh-ssh-bruteforce-alert.png)
 
 The alert provided the initial detection evidence and identified repeated authentication failures requiring investigation.
 
@@ -26,7 +26,7 @@ The alert provided the initial detection evidence and identified repeated authen
 
 The SSH security events were investigated in Splunk to correlate the authentication activity from a centralized SIEM.
 
-![Splunk SSH Alert Correlation](evidence/02-splunk-ssh-alert-correlation.png)
+![Splunk SSH Alert Correlation](02-splunk-ssh-alert-correlation.png)
 
 Splunk provided centralized visibility into the authentication events and supported correlation with other available security telemetry.
 
@@ -36,7 +36,7 @@ Splunk provided centralized visibility into the authentication events and suppor
 
 The underlying Linux authentication logs were reviewed to validate the security alerts against the original host evidence.
 
-![Linux SSH Authentication Logs](evidence/03-linux-ssh-authentication-logs.png)
+![Linux SSH Authentication Logs](03-linux-ssh-authentication-logs.png)
 
 The logs contained failed SSH authentication activity, including failed-password and invalid-user events associated with the controlled test.
 
@@ -48,7 +48,7 @@ This provided host-level evidence supporting the Wazuh and Splunk findings.
 
 The observed repeated authentication attempts were mapped to the MITRE ATT&CK framework.
 
-![MITRE ATT&CK Mapping](evidence/04-mitre-attack-mapping.png)
+![MITRE ATT&CK Mapping](04-mitre-attack-mapping.png)
 
 **T1110 — Brute Force**
 
