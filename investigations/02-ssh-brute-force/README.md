@@ -58,7 +58,7 @@ The timeline helped correlate the authentication failures across the available s
 
 The observed repeated authentication attempts were mapped to the MITRE ATT&CK framework.
 
-![MITRE ATT&CK Mapping](evidence/05-mitre-attack-mapping.png)
+![MITRE ATT&CK Mapping](05-mitre-attack-mapping.png)
 
 **T1110 — Brute Force**
 
