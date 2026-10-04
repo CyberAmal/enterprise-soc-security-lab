@@ -359,16 +359,18 @@ This test demonstrated how custom network-detection logic can be developed and v
 
 Wazuh provides host-based security monitoring across the lab environment.
 
-A major part of the project was integrating **Wazuh alerts into Splunk**, allowing endpoint security events to be investigated alongside firewall, IDS, and network telemetry.
+A major part of the project was integrating **Wazuh alerts into Splunk**, allowing Wazuh security events to be investigated alongside firewall, IDS, and network telemetry.
 
-Monitoring Flow
+### Monitoring Flow
 
+```mermaid
 flowchart LR
     A[Monitored Host] --> B[Wazuh Agent]
     B --> C[Wazuh Manager]
     C --> D[Wazuh Alert]
     D --> E[Splunk SIEM]
     E --> F[Analyst Investigation]
+```
 
 ### Agent Monitoring
 
