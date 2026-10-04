@@ -361,6 +361,15 @@ Wazuh provides host-based security monitoring across the lab environment.
 
 A major part of the project was integrating **Wazuh alerts into Splunk**, allowing endpoint security events to be investigated alongside firewall, IDS, and network telemetry.
 
+Monitoring Flow
+
+flowchart LR
+    A[Monitored Host] --> B[Wazuh Agent]
+    B --> C[Wazuh Manager]
+    C --> D[Wazuh Alert]
+    D --> E[Splunk SIEM]
+    E --> F[Analyst Investigation]
+
 ### Agent Monitoring
 
 The Wazuh Agent was deployed on the dedicated IDS sensor and connected to the Wazuh Manager for centralized host monitoring.
